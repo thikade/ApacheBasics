@@ -5,14 +5,6 @@ USER_HOME=/home/$USER
 USER_BIN=$USER_HOME/bin
 EXAMPLE_DIR=$USER_HOME/apache
 
-###########################
-# APACKGE INSTALLATION
-###########################
-# yum -y -q update
-# yum -y -q install httpd man telnet nc strace lsof git links
-# yum -y -q install epel-release.noarch 
-# yum -y -q install bash-completion
-
 if [ "$1" = "clean"  -o "$1" = "purge" ]; then
   echo "deleteing user $USER and his home $USER_HOME"
   echo "press Strg-c to abort in the next 1 seconds..."
