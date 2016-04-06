@@ -1,0 +1,41 @@
+_a2ctl() 
+{
+    local cur prev opts base USER USER_HOME USER_BIN EXAMPLE_DIR instances
+
+    USER=student
+    USER_HOME=/home/$USER
+    USER_BIN=$USER_HOME/bin
+    EXAMPLE_DIR=$USER_HOME/apache
+    # the instances we want to complete
+    instances=$(ls ${EXAMPLE_DIR})
+
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    #
+    #  The basic options we'll complete.
+    #
+    opts="start stop restart status graceful graceful-stop configtest -v -V -l -t -X -S"
+
+    #
+    #  Complete the arguments to some of the basic commands.
+    #
+    # echo "PREV is: ${prev}"
+    # echo "COMP_CWORD is: ${COMP_CWORD}"
+
+    if [ ${COMP_CWORD} -gt 1 ]; then 
+         COMPREPLY=($(compgen -W "${opts}" -- ${cur}))  
+         # local running=$(for x in `xm list --long | \
+         # grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)`; do echo ${x} ; done )
+         return 0
+
+    else  # first argument is the instance
+        # complete instances
+        COMPREPLY=( $(compgen -W "${instances}" -- ${cur}) )
+        return 0
+    fi
+
+}
+complete -F _a2ctl a2ctl
+

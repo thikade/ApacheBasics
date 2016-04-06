@@ -1,0 +1,57 @@
+#!/bin/bash
+
+EXAMPLES_DIR=$HOME/apache
+
+INSTANCE=$1
+INSTANCE_PATH=$EXAMPLES_DIR/$INSTANCE
+
+function usage {
+  cat <<EOT
+
+  usage:
+          $0 <INSTANCE> command
+
+  examples:      $0 ex01 start
+                 $0 ex02 stop
+                 $0 ex03 status
+
+EOT
+}
+
+function listInstances {
+   echo ""
+   echo "======================================"
+   echo "AVAILABLE INSTANCES: "
+   echo "--------------------------------------"
+   ls -1 $EXAMPLES_DIR
+   echo ""
+   echo "======================================"
+   echo ""
+}
+
+if [ "${INSTANCE}" = "" ]; then
+  echo "ERROR: You MUST specify an INSTANCE directory!"
+  listInstances
+  usage
+  exit 1
+fi
+
+if [ -d ${INSTANCE_PATH} ]; then
+  echo ""
+  echo "HTTPD instance directory: $INSTANCE_PATH"
+  echo ""
+else
+  echo "ERROR: instance directory \"${INSTANCE_PATH}\" not found!"
+  listInstances
+  exit 2
+fi
+
+shift 1
+
+if [ "$1" = "status" ]; then
+  ps -ef | grep [h]ttpd | grep $INSTANCE
+  exit
+fi 
+export INSTANCE_ROOT=$INSTANCE_PATH
+export OPTIONS="-d $INSTANCE_ROOT"
+apachectl $*
