@@ -54,6 +54,7 @@ cp -r www/* $USER_HOME/www/
 find $USER_HOME/www -type d -exec chmod a+rx \;
 find $USER_HOME/www -type f -exec chmod a+r  \;
 chown -R $USER $USER_HOME/www
+chmod a+rx $USER_HOME
 
 ls -l `dirname $EXAMPLE_DIR`
 ls $EXAMPLE_DIR
