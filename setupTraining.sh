@@ -44,6 +44,10 @@ chown -R $USER  ${USER_BIN}/
 
 # copy assets: apache examples
 cp -r userDir/apache/* ${EXAMPLE_DIR}/
+
+# replace "${HOME}" with /home/$USER for better readability
+perl -i -pe "s,\\$\\{HOME\\},/home/$USER," ${EXAMPLE_DIR}/*/conf/httpd.conf
+
 chown -R $USER  ${EXAMPLE_DIR}/
 
 # copy asset: bash completion 
@@ -51,8 +55,10 @@ cp userDir/a2ctl.completion /etc/bash_completion.d/a2ctl
 
 # copy www directory to /home/$USER/www
 cp -r www/* $USER_HOME/www/
-find $USER_HOME/www -type d -exec chmod a+rx \;
-find $USER_HOME/www -type f -exec chmod a+r  \;
+
+
+find $USER_HOME/www -type d | xargs chmod a+rx 
+find $USER_HOME/www -type f | xargs chmod a+r  
 chown -R $USER $USER_HOME/www
 chmod a+rx $USER_HOME
 
