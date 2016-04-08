@@ -62,6 +62,11 @@ find $USER_HOME/www -type f | xargs chmod a+r
 chown -R $USER $USER_HOME/www
 chmod a+rx $USER_HOME
 
-ls -l `dirname $EXAMPLE_DIR`
-ls $EXAMPLE_DIR
-find $USER_HOME/www -ls 
+# ls -l `dirname $EXAMPLE_DIR`
+# ls $EXAMPLE_DIR
+# find $USER_HOME/www -ls 
+
+cd ${EXAMPLE_DIR}
+
+echo ""
+echo "done!"
