@@ -1,7 +1,7 @@
 #!/bin/bash
 
 P="httpd httpd-tools man telnet nc strace curl wget lsof git links bind-utils wireshark"
-P="$P yum-utils bash-completion"
+P="$P yum-utils bash-completioni siege"
 
 ###########################
 # PACKAGE INSTALLATION

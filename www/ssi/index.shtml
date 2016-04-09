@@ -1,0 +1,19 @@
+<html><body>
+<!--#config errmsg="[There was an error using SSI]" -->
+<h3>SSI Test Page</h3>
+
+<!--#config timefmt="%D" -->
+<!--#set var="sleeptime" value="2" -->
+
+Today is <!--#echo var="DATE_LOCAL" -->
+
+and I was busy for
+<!--#echo var="sleeptime" -->
+seconds
+
+<pre>
+<!--#exec cmd="sleep $sleeptime" -->
+</pre>
+
+
+</body></html>

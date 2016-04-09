@@ -1,9 +1,13 @@
 #!/bin/bash
 
+EXEC_DIR=/root/apacheTraining
+cd $EXEC_DIR
+
 USER=student
 USER_HOME=/home/$USER
 USER_BIN=$USER_HOME/bin
 EXAMPLE_DIR=$USER_HOME/apache
+EXAMPLE_BACKUP_DIR=$USER_HOME/backup
 
 if [ "$1" = "clean"  -o "$1" = "purge" ]; then
   echo "deleteing user $USER and his home $USER_HOME"
@@ -31,8 +35,7 @@ fi
 echo ""
 
 if [ -d $EXAMPLE_DIR ]; then
-  # cp -r $EXAMPLE_DIR $EXAMPLE_DIR.`date +%Y%m%d_%H.%M.%S` 
-  su - $USER -c "tar czf $EXAMPLE_DIR.`date +%Y%m%d_%H.%M.%S`.tgz $EXAMPLE_DIR "
+  su - $USER -c "mkdir $EXAMPLE_BACKUP_DIR 2>/dev/null; tar czf $EXAMPLE_BACKUP_DIR/apache_`date +%Y%m%d_%H.%M.%S`.tgz -C $USER_HOME apache "
 fi
 su - $USER -c "mkdir $EXAMPLE_DIR  2> /dev/null"
 su - $USER -c "mkdir bin 2> /dev/null"
