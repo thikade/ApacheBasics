@@ -46,6 +46,10 @@ else
   exit 2
 fi
 
+# check run and logs dir inside INSTANCE_PATH and create if needed
+test -d ${INSTANCE_PATH}/run  || mkdir  ${INSTANCE_PATH}/run
+test -d ${INSTANCE_PATH}/logs || mkdir  ${INSTANCE_PATH}/logs
+
 shift 1
 
 if [ "$1" = "status" ]; then
