@@ -50,7 +50,7 @@ chown -R $USER  ${USER_BIN}/
 cp -r userDir/apache/* ${EXAMPLE_DIR}/
 
 # replace "${HOME}" with /home/$USER for better readability
-perl -i -pe "s,\\$\\{HOME\\},/home/$USER," ${EXAMPLE_DIR}/*/conf/httpd.conf
+perl -i -pe "s,\\$\\{HOME\\},/home/$USER," ${EXAMPLE_DIR}/*/*/httpd.conf
 
 chown -R $USER  ${EXAMPLE_DIR}/
 
