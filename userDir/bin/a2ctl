@@ -57,5 +57,5 @@ if [ "$1" = "status" ]; then
   exit
 fi 
 export INSTANCE_ROOT=$INSTANCE_PATH
-export OPTIONS="-d $INSTANCE_ROOT"
+export OPTIONS="-d $INSTANCE_ROOT $OPTIONS"
 apachectl $*
