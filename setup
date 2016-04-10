@@ -1,11 +1,4 @@
 #!/bin/bash
 
-CURCMD=$0
-
-if [ $(id -u) -gt 0 ]; then
-   echo "switching to root for setup ..."
-   sudo $0
-else   
-   bash ./installPackages.sh
-   bash ./setupTraining.sh
-fi
+sudo bash ./installPackages.sh
+bash ./setupTraining.sh
