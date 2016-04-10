@@ -35,7 +35,8 @@ fi
 echo ""
 
 if [ -d $EXAMPLE_DIR ]; then
-  sudo su - $USER -c "mkdir $EXAMPLE_BACKUP_DIR 2>/dev/null; tar czf $EXAMPLE_BACKUP_DIR/apache_`date +%Y%m%d_%H.%M.%S`.tgz -C $USER_HOME apache "
+  # sudo su - $USER -c "mkdir $EXAMPLE_BACKUP_DIR 2>/dev/null; tar czf $EXAMPLE_BACKUP_DIR/apache_`date +%Y%m%d_%H.%M.%S`.tgz -C $USER_HOME apache "
+  sudo su - $USER -c "mkdir $EXAMPLE_BACKUP_DIR 2>/dev/null; cp -rf $EXAMPLE_DIR $EXAMPLE_BACKUP_DIR/apache_`date +%Y%m%d_%H.%M.%S`"
 fi
 sudo su - $USER -c "mkdir $EXAMPLE_DIR  2> /dev/null"
 sudo su - $USER -c "mkdir bin 2> /dev/null"
