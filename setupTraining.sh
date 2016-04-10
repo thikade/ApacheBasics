@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXEC_DIR=/root/apacheTraining
+EXEC_DIR=$HOME/ApacheBasics
 cd $EXEC_DIR
 
 USER=student
