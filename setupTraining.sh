@@ -35,11 +35,11 @@ fi
 echo ""
 
 if [ -d $EXAMPLE_DIR ]; then
-  su - $USER -c "mkdir $EXAMPLE_BACKUP_DIR 2>/dev/null; tar czf $EXAMPLE_BACKUP_DIR/apache_`date +%Y%m%d_%H.%M.%S`.tgz -C $USER_HOME apache "
+  sudo su - $USER -c "mkdir $EXAMPLE_BACKUP_DIR 2>/dev/null; tar czf $EXAMPLE_BACKUP_DIR/apache_`date +%Y%m%d_%H.%M.%S`.tgz -C $USER_HOME apache "
 fi
-su - $USER -c "mkdir $EXAMPLE_DIR  2> /dev/null"
-su - $USER -c "mkdir bin 2> /dev/null"
-su - $USER -c "mkdir www 2> /dev/null"
+sudo su - $USER -c "mkdir $EXAMPLE_DIR  2> /dev/null"
+sudo su - $USER -c "mkdir bin 2> /dev/null"
+sudo su - $USER -c "mkdir www 2> /dev/null"
 
 # copy assets: bin
 cp -r userDir/bin/* ${USER_BIN}/
@@ -54,7 +54,7 @@ perl -i -pe "s,\\$\\{HOME\\},/home/$USER," ${EXAMPLE_DIR}/*/conf/httpd.conf
 chown -R $USER  ${EXAMPLE_DIR}/
 
 # copy asset: bash completion 
-cp userDir/a2ctl.completion /etc/bash_completion.d/a2ctl
+sudo cp userDir/a2ctl.completion /etc/bash_completion.d/a2ctl
 
 # copy www directory to /home/$USER/www
 cp -r www/* $USER_HOME/www/
