@@ -58,4 +58,5 @@ if [ "$1" = "status" ]; then
 fi 
 export INSTANCE_ROOT=$INSTANCE_PATH
 export OPTIONS="-d $INSTANCE_ROOT $OPTIONS"
-apachectl $*
+
+$HOME/bin/apachectl_2.x.sh $*
